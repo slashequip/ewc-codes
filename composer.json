@@ -10,7 +10,8 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.65",
         "laravel/tinker": "^2.5",
-        "lorisleiva/laravel-actions": "^2.2"
+        "lorisleiva/laravel-actions": "^2.2",
+        "sentry/sentry-laravel": "^2.10"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
