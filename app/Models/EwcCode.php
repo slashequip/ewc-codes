@@ -88,7 +88,7 @@ class EwcCode extends Model
     {
         return $this->hazardous ? '*' : '';
     }
-    
+
     public function getScoutKey(): string
     {
         return $this->uuid->toString();
