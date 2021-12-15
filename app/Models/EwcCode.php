@@ -5,6 +5,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 
@@ -27,6 +28,7 @@ use Ramsey\Uuid\UuidInterface;
 class EwcCode extends Model
 {
     use HasFactory;
+    use Searchable;
 
     protected $guarded = [];
 
@@ -85,5 +87,32 @@ class EwcCode extends Model
     private function getHazardousText(): string
     {
         return $this->hazardous ? '*' : '';
+    }
+
+    public function getScoutKey(): string
+    {
+        return $this->uuid->toString();
+    }
+
+    public function getScoutKeyName(): string
+    {
+        return 'uuid';
+    }
+
+    public function toSearchableArray(): array
+    {
+        $data = $this->toArray();
+
+        // We don't want dates being searched.
+        unset($data['last_updated_at']);
+
+        // Exception for hazardous because we want to search the name.
+        if ($data['hazardous']) {
+            $data['hazardous'] = 'hardardous';
+        } else {
+            unset($data['hazardous']);
+        }
+
+        return $data;
     }
 }
