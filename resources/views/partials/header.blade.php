@@ -19,10 +19,6 @@
                 </a>
             </div>
             <div class="ml-10 space-x-4">
-                <a href="{{ url('browse') }}" class="text-base font-medium text-white hover:text-green-50">
-                    Browse
-                </a>
-
                 <a href="{{ url('docs') }}" class="text-base font-medium text-white hover:text-green-50">
                     API Docs
                 </a>
