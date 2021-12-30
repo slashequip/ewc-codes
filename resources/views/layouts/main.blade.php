@@ -9,9 +9,11 @@
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
-    <script src="https://rabbit.slashequip.com/script.js" data-site="CVHGQSAW" defer></script>
+    @if(app()->environment('production'))
+        <script src="https://rabbit.slashequip.com/script.js" data-site="CVHGQSAW" defer></script>
+    @endif
 </head>
-<body class="antialiased font-sans bg-gray-50">
+<body class="antialiased font-sans bg-gray-50 selection:bg-green-500 selection:text-black min-h-screen">
     <div class="min-h-screen flex flex-col">
         <div class="flex-initial">
             @include('partials.header')

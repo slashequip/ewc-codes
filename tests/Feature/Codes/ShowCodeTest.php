@@ -41,7 +41,6 @@ it('can list a known code', function () {
         "code_description" => "Code One Description",
         "density" => 0.1234,
         "hazardous" => true,
-        "created_at" => $code->created_at->toIso8601String(),
-        "updated_at" => $code->created_at->toIso8601String(),
+        "last_updated_at" => $code->updated_at->toIso8601String(),
     ]);
 });
