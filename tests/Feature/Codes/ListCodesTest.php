@@ -49,8 +49,7 @@ it('can list all known codes', function () {
             "code_description" => "Code One Description",
             "density" => 0.1234,
             "hazardous" => true,
-            "created_at" => $codeOne->created_at->toIso8601String(),
-            "updated_at" => $codeOne->created_at->toIso8601String(),
+            "last_updated_at" => $codeOne->updated_at->toIso8601String(),
         ],
         [
             "uuid" => $codeTwo->uuid->toString(),
@@ -63,8 +62,7 @@ it('can list all known codes', function () {
             "code_description" => "Code Two Description",
             "density" => 0.5678,
             "hazardous" => false,
-            "created_at" => $codeTwo->created_at->toIso8601String(),
-            "updated_at" => $codeTwo->created_at->toIso8601String(),
+            "last_updated_at" => $codeTwo->updated_at->toIso8601String(),
         ],
     ]);
 });
