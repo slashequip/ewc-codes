@@ -30,3 +30,25 @@
         </div>
     </nav>
 </header>
+
+@if (isset($breadcrumbs))
+    <nav class="max-w-screen-lg py-12 mx-auto flex items-center gap-2">
+        @foreach($breadcrumbs->all() as $crumb)
+            @if ($crumb->url)
+                <a class="text-sm font-semibold tracking-wider text-green-600 uppercase" href="{{ $crumb->url }}">{{ $crumb->title }}</a>
+            @else
+                <span class="text-sm font-semibold tracking-wider text-gray-600 uppercase">{{ $crumb->title }}</span>
+            @endif
+
+            @if(! $loop->last)
+                <span>
+                    <svg class="h-4 w-auto text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
+                        <rect width="256" height="256" fill="none"></rect>
+                        <polyline points="56 48 136 128 56 208" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline>
+                        <polyline points="136 48 216 128 136 208" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline>
+                    </svg>
+                </span>
+            @endif
+        @endforeach
+    </nav>
+@endif
