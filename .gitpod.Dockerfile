@@ -1,2 +1,1 @@
-FROM sail-8.1/app
-#FROM php:8.1-fpm
+FROM laravelsail/php81-composer:latest
