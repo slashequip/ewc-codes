@@ -19,3 +19,5 @@ RUN add-apt-repository -y ppa:ondrej/php \
         php8.1-tokenizer \
         php8.1-xml \
         php8.1-zip
+
+USER gitpod
