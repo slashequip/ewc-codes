@@ -10,14 +10,18 @@ ports:
     onOpen: ignore
 
 tasks:
-  - init: >
+  - name: Setup backend
+    init: >
       mysql -u root -e "create database laravel" &&
       cp .env.example .env &&
       sed -i "s|APP_URL=|APP_URL=${GITPOD_WORKSPACE_URL}|g" .env &&
       sed -i "s|APP_URL=https://|APP_URL=https://8000-|g" .env &&
-      composer install &&
-      npm i &&
-      php artisan key:generate
-    command: >
-      php -S 0.0.0.0:8000 -t public
+  - name: Setup site
+    init: composer install && php artisan key:generate
+  - name: Serve site
+    command: php -S 0.0.0.0:8000 -t public
+  - name: Compile Assets
+    init: npm install
+    command: npm run watch
+    openMode: split-right
     
