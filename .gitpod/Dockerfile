@@ -100,7 +100,7 @@ RUN install-packages mysql-server \
 # Install our own MySQL config
 COPY --chown=gitpod:gitpod mysql/mysql.cnf /etc/mysql/mysql.conf.d/mysqld.cnf
 COPY --chown=gitpod:gitpod mysql/client.cnf /etc/mysql/mysql.conf.d/client.cnf
-COPY --chown=gitpod:gitpod mysql/mysql-bashrc-launch.sh /etc/mysql/mysql-bashrc-launch.sh
+COPY --chown=gitpod:gitpod ./mysql/mysql-bashrc-launch.sh /etc/mysql/mysql-bashrc-launch.sh
 
 USER gitpod
 
