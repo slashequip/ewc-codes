@@ -1,5 +1,9 @@
 FROM gitpod/workspace-mysql
 
-RUN brew update
-RUN brew upgrade
-RUN brew install php; exit 0;
+USER root
+
+RUN add-apt-repository ppa:ondrej/php && \
+    install-packages php8.1 && \
+    update-alternatives --set php /usr/bin/php8.1
+
+USER gitpod
