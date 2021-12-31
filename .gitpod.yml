@@ -10,15 +10,18 @@ ports:
     onOpen: ignore
 
 tasks:
-  - name: Setup backend
+  - name: Setup DB
     init: >
-      mysql -u root -e "create database laravel" &&
+      gp await-port 3306 &&
+      mysql -u root -e "create database laravel"
+    openMode: split-right
+  - name: Setup site
+    init:  >
       cp .env.example .env &&
       sed -i "s|APP_URL=|APP_URL=${GITPOD_WORKSPACE_URL}|g" .env &&
       sed -i "s|APP_URL=https://|APP_URL=https://8000-|g" .env
-    openMode: split-right
-  - name: Setup site
-    init: composer install && php artisan key:generate
+      composer install &&
+      php artisan key:generate      
     openMode: split-right
   - name: Serve site
     command: php -S 0.0.0.0:8000 -t public
