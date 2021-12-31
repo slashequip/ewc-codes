@@ -1,2 +1,5 @@
+FROM gitpod/workspace-mysql
 
-FROM laravelsail/php81-composer
+RUN brew update
+RUN brew upgrade
+RUN brew install php81
