@@ -20,7 +20,7 @@ class ShowChapterPage
         $breadCrumbs = BreadcrumbBuilder::make()
             ->add(Crumb::make("Home", action(ShowLandingPage::class)))
             ->add(Crumb::make("Browse", action(ShowBrowsePage::class)))
-            ->add(Crumb::make(sprintf('%02d', $chapter->identifier)));
+            ->add(Crumb::make(sprintf('%02d - %s', $chapter->identifier, $chapter->title)));
 
         return view('chapter', [
             'breadcrumbs' => $breadCrumbs,

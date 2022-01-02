@@ -39,9 +39,9 @@
     <nav class="max-w-screen-lg py-12 mx-auto flex items-center gap-2">
         @foreach($breadcrumbs->all() as $crumb)
             @if ($crumb->url)
-                <a class="text-sm font-semibold tracking-wider text-green-600 uppercase" href="{{ $crumb->url }}">{{ $crumb->title }}</a>
+                <a class="text-sm font-semibold tracking-wider text-green-600 uppercase" title="{{ $crumb->getFullTitle() }}" href="{{ $crumb->getUrl() }}">{{ $crumb->getTitle() }}</a>
             @else
-                <span class="text-sm font-semibold tracking-wider text-gray-600 uppercase">{{ $crumb->title }}</span>
+                <span class="text-sm font-semibold tracking-wider text-gray-600 uppercase" title="{{ $crumb->getFullTitle() }}">{{ $crumb->getTitle() }}</span>
             @endif
 
             @if(! $loop->last)

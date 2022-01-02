@@ -18,6 +18,7 @@ class ShowBrowsePage
         return view('browse', [
             'breadcrumbs' => $breadCrumbs,
             'chapters' => Classification::query()
+                ->with('children')
                 ->where('type', ClassificationType::CHAPTER)
                 ->orderBy('identifier')
                 ->get(),
