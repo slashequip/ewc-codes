@@ -31,4 +31,9 @@ class Classification extends Model
     {
         return $this->hasMany(Classification::class, 'parent_id', 'id');
     }
+
+    public function formattedIdentifier(): string
+    {
+        return sprintf("%02d", $this->identifier);
+    }
 }

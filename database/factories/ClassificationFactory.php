@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Ramsey\Uuid\Uuid;
+use App\Models\Enums\ClassificationType;
 
 class ClassificationFactory extends Factory
 {
@@ -14,7 +16,11 @@ class ClassificationFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'uuid' => Uuid::uuid4()->toString(),
+            'parent_id' => null,
+            'type' => ClassificationType::CHAPTER,
+            'identifier' => rand(1, 20),
+            'title' => $this->faker->sentence(5),
         ];
     }
 }
