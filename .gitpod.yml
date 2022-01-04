@@ -29,4 +29,7 @@ tasks:
     init: npm install
     command: npm run watch
     openMode: split-right
-    
+
+vscode:
+  extensions:
+    - esbenp.prettier-vscode
