@@ -84,7 +84,7 @@ class EwcCode extends Model
         return $this->updated_at->toIso8601String();
     }
 
-    private function getHazardousText(): string
+    public function getHazardousText(): string
     {
         return $this->hazardous ? '*' : '';
     }

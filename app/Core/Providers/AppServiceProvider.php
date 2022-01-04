@@ -27,6 +27,8 @@ class AppServiceProvider extends ServiceProvider
     {
         JsonResource::withoutWrapping();
 
-        URL::forceScheme('https');
+        if (config('app.force_https')) {
+            URL::forceScheme('https');
+        }
     }
 }
