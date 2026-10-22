@@ -4,7 +4,7 @@ namespace App\Core;
 
 use App\Core\Middleware\EncryptCookies;
 use App\Core\Middleware\ForceJson;
-use App\Core\Middleware\VerifyCsrfToken;
+use App\Core\Middleware\PreventRequestForgery;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Foundation\Http\Kernel;
 use Illuminate\Routing\Middleware\SubstituteBindings;
@@ -23,7 +23,7 @@ class HttpKernel extends Kernel
     protected $middleware = [
         // \App\Core\Middleware\TrustHosts::class,
         \App\Core\Middleware\TrustProxies::class,
-        \Fruitcake\Cors\HandleCors::class,
+        \Illuminate\Http\Middleware\HandleCors::class,
         \App\Core\Middleware\PreventRequestsDuringMaintenance::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Core\Middleware\TrimStrings::class,
@@ -42,7 +42,7 @@ class HttpKernel extends Kernel
             StartSession::class,
             // \Illuminate\Session\Middleware\AuthenticateSession::class,
             ShareErrorsFromSession::class,
-            VerifyCsrfToken::class,
+            PreventRequestForgery::class,
             SubstituteBindings::class,
         ],
 

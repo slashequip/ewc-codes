@@ -23,7 +23,7 @@ class CreateEwcCodesTable extends Migration
             $table->string('code');
             $table->string('code_description');
             $table->tinyInteger('hazardous')->default(0);
-            $table->float('density', 8, 4);
+            $table->decimal('density', total: 8, places: 4);
             $table->timestamps();
         });
     }
